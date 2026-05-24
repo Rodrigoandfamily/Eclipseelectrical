@@ -51,20 +51,7 @@
     .ham.open span:nth-child(2) { opacity:0; }
     .ham.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
 
-    /* MOBILE DRAWER */
-    .overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,.45); z-index:199; }
-    .overlay.open { display:block; }
-    .mobile-nav { display:none; position:fixed; top:0; right:0; width:min(300px,82vw); height:100vh; background:var(--off-white); z-index:200; flex-direction:column; border-left:3px solid var(--blue); box-shadow:-4px 0 30px rgba(0,0,0,.15); }
-    .mobile-nav.open { display:flex; }
-    .nav-close { position:absolute; top:1.2rem; right:1.5rem; background:none; border:none; font-size:1.8rem; color:var(--mid); cursor:pointer; z-index:10; }
-    .mobile-links { flex:1; overflow-y:auto; padding:3.5rem 1.5rem 1rem; display:flex; flex-direction:column; }
-    .mobile-links a { font-size:.95rem; font-weight:600; color:var(--ink); text-decoration:none; padding:.85rem .25rem; border-bottom:1px solid rgba(0,0,0,.07); transition:color .15s; }
-    .mobile-links a:last-child { border-bottom:none; }
-    .mobile-links a:hover,.mobile-links a.active { color:var(--blue-dark); }
-    .mobile-cta-bottom { display:flex; gap:.6rem; padding:.75rem 1.25rem 1.25rem; border-top:1px solid rgba(0,0,0,.08); flex-shrink:0; }
-    .mobile-cta-bottom a { flex:1; text-align:center; font-weight:700; font-size:.82rem; padding:.7rem .5rem; border-radius:4px; text-decoration:none; }
-    .m-call { background:var(--cream); color:var(--blue-dark); border:1.5px solid var(--blue); }
-    .m-quote { background:var(--red); color:#fff; }
+
 
     /* TICKER */
     .ticker { background:var(--cream); border-top:1px solid rgba(0,0,0,.07); border-bottom:1px solid rgba(0,0,0,.07); overflow:hidden; height:36px; display:flex; align-items:center; }
@@ -263,34 +250,109 @@
     }
 
 
-    /* ══ MOBILE DRAWER FIXES ══ */
 
-    /* 1. CTA buttons at bottom - don't stretch */
+
+
+    /* ══ MOBILE NAV - COMPLETE REBUILD ══ */
+    .overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.5);
+      z-index: 1998;
+    }
+    .overlay.open { display: block; }
+
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: min(300px, 82vw);
+      height: 100vh;
+      background: var(--off-white);
+      z-index: 1999;
+      flex-direction: column;
+      border-left: 3px solid var(--blue);
+      box-shadow: -4px 0 30px rgba(0,0,0,.2);
+      overflow: hidden;
+    }
+    .mobile-nav.open { display: flex; }
+
+    /* Close button */
+    .nav-close {
+      position: absolute;
+      top: 0.85rem;
+      right: 1rem;
+      background: none;
+      border: none;
+      font-size: 2rem;
+      line-height: 1;
+      color: var(--ink);
+      cursor: pointer;
+      z-index: 10;
+      padding: 0.25rem 0.5rem;
+    }
+
+    /* Nav links */
+    .mobile-links {
+      flex: 1;
+      overflow-y: auto;
+      padding: 4.5rem 1.5rem 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .mobile-links a {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--ink);
+      text-decoration: none;
+      padding: 1.1rem 0.5rem;
+      border-bottom: 1px solid rgba(0,0,0,.08);
+      display: block;
+      transition: color .15s;
+    }
+
+    .mobile-links a:last-child { border-bottom: none; }
+    .mobile-links a:hover { color: var(--blue-dark); }
+    .mobile-links a.active { color: var(--blue-dark); font-weight: 700; }
+
+    /* CTA buttons — natural size, not stretched */
     .mobile-cta-bottom {
       display: flex;
+      flex-direction: row;
       gap: 0.6rem;
-      padding: 0.75rem 1.25rem 1.5rem;
+      padding: 1rem 1.25rem 1.5rem;
       border-top: 1px solid rgba(0,0,0,.08);
       flex-shrink: 0;
     }
 
     .mobile-cta-bottom a {
-      flex: 0 1 auto;
-      min-width: 0;
-      width: auto;
+      flex: 1;
+      max-width: 48%;
       text-align: center;
-      white-space: nowrap;
       font-weight: 700;
-      font-size: 0.82rem;
-      padding: 0.7rem 1.2rem;
+      font-size: 0.78rem;
+      padding: 0.75rem 0.5rem;
       border-radius: 4px;
       text-decoration: none;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
-    /* 2. More space between nav links */
-    .mobile-links a {
-      padding: 1rem 0.25rem;
-      font-size: 1rem;
+    .m-call {
+      background: var(--cream);
+      color: var(--blue-dark) !important;
+      border: 1.5px solid var(--blue);
+    }
+
+    .m-quote {
+      background: var(--red) !important;
+      color: #fff !important;
+      border: none;
     }
 
   </style>
@@ -574,52 +636,20 @@
 </footer>
 
 
-<script>
-  // Smart form handler
-  document.querySelector('.quote-form')?.addEventListener('submit', async function(e) {
-    e.preventDefault();
-    const form = e.target;
-    const statusEl = form.querySelector('.form-status');
-    const btn = form.querySelector('button[type="submit"]');
-    btn.disabled = true;
-    btn.textContent = 'Sending...';
-    statusEl.style.display = 'block';
-    const fd = new FormData(form);
-    const msg = fd.get('message') || '';
-    const phone = fd.get('phone') || 'Not provided';
-    const svc = fd.get('service_type') || 'Not specified';
-    fd.set('message', '[Service: ' + svc + '] [Phone: ' + phone + ']\n' + msg);
-    try {
-      fd.append('form-name', form.getAttribute('name'));
-      const res = await fetch('/', { method: 'POST', body: fd });
-      if (res.ok) {
-        statusEl.textContent = '✅ Request sent! We\'ll contact you shortly.';
-        statusEl.style.color = '#16a34a';
-        form.reset();
-      } else {
-        throw new Error('Submission failed. Please try again.');
-      }
-    } catch (err) {
-      statusEl.textContent = '❌ ' + err.message;
-      statusEl.style.color = '#dc2626';
-    } finally {
-      btn.disabled = false;
-      btn.textContent = 'Send Request';
-    }
-  });
 
+<script>
   const hamBtn = document.getElementById("hamBtn");
   const mobileNav = document.getElementById("mobileNav");
   const overlay = document.getElementById("overlay");
   const navClose = document.getElementById("navClose");
 
-  // Fix X button not toggling back to hamburger
   function openMenu() {
     hamBtn.classList.add("open");
     mobileNav.classList.add("open");
     overlay.classList.add("open");
     document.body.style.overflow = "hidden";
   }
+
   function closeMenu() {
     hamBtn.classList.remove("open");
     mobileNav.classList.remove("open");
@@ -630,8 +660,12 @@
   hamBtn.addEventListener("click", openMenu);
   navClose.addEventListener("click", closeMenu);
   overlay.addEventListener("click", closeMenu);
-</script>
 
+  // Close on nav link tap
+  document.querySelectorAll(".mobile-links a").forEach(function(link) {
+    link.addEventListener("click", closeMenu);
+  });
+</script>
 
 </body>
 </html>
