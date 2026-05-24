@@ -209,6 +209,37 @@
       box-shadow: 0 2px 16px rgba(0,0,0,0.10);
     }
 
+
+    /* ══ MOBILE DRAWER FIXES ══ */
+
+    /* 1. CTA buttons at bottom - don't stretch */
+    .mobile-cta-bottom {
+      display: flex;
+      gap: 0.6rem;
+      padding: 0.75rem 1.25rem 1.5rem;
+      border-top: 1px solid rgba(0,0,0,.08);
+      flex-shrink: 0;
+    }
+
+    .mobile-cta-bottom a {
+      flex: 0 1 auto;
+      min-width: 0;
+      width: auto;
+      text-align: center;
+      white-space: nowrap;
+      font-weight: 700;
+      font-size: 0.82rem;
+      padding: 0.7rem 1.2rem;
+      border-radius: 4px;
+      text-decoration: none;
+    }
+
+    /* 2. More space between nav links */
+    .mobile-links a {
+      padding: 1rem 0.25rem;
+      font-size: 1rem;
+    }
+
   </style>
 </head>
 <body>
@@ -272,7 +303,7 @@
 </div><!-- /site-header -->
 <div class="overlay" id="overlay"></div>
 <nav class="mobile-nav" id="mobileNav">
-  <button class="nav-close" id="navClose">×</button>
+  <button class="nav-close" id="navClose" onclick="closeMenu()">×</button>
   <div class="mobile-links">
     <a href="index.html">Home</a>
 <a href="services.html">Services</a>
@@ -399,8 +430,21 @@
   const mobileNav = document.getElementById("mobileNav");
   const overlay = document.getElementById("overlay");
   const navClose = document.getElementById("navClose");
-  function openMenu() { hamBtn.classList.add("open"); mobileNav.classList.add("open"); overlay.classList.add("open"); }
-  function closeMenu() { hamBtn.classList.remove("open"); mobileNav.classList.remove("open"); overlay.classList.remove("open"); }
+
+  // Fix X button not toggling back to hamburger
+  function openMenu() {
+    hamBtn.classList.add("open");
+    mobileNav.classList.add("open");
+    overlay.classList.add("open");
+    document.body.style.overflow = "hidden";
+  }
+  function closeMenu() {
+    hamBtn.classList.remove("open");
+    mobileNav.classList.remove("open");
+    overlay.classList.remove("open");
+    document.body.style.overflow = "";
+  }
+
   hamBtn.addEventListener("click", openMenu);
   navClose.addEventListener("click", closeMenu);
   overlay.addEventListener("click", closeMenu);
