@@ -352,6 +352,44 @@
       transition: transform 0.3s ease !important;
     }
 
+
+    /* ══ MOBILE NAV FINAL POLISH ══ */
+
+    /* Standard 0.35s animation */
+    .mobile-nav {
+      transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    }
+
+    /* Shrink link padding so buttons fit without scrolling */
+    .mobile-links {
+      padding: 4rem 1.5rem 0.5rem !important;
+    }
+
+    .mobile-links a {
+      padding: 0.85rem 0.5rem !important;
+      font-size: 1rem !important;
+    }
+
+    /* CTA fully visible — move up */
+    .mobile-cta-bottom {
+      flex-shrink: 0 !important;
+      padding: 0.75rem 1.25rem 1.25rem !important;
+      gap: 0.5rem !important;
+      background: var(--off-white) !important;
+      border-top: 1px solid rgba(0,0,0,.1) !important;
+    }
+
+    .mobile-cta-bottom a {
+      display: block !important;
+      width: 100% !important;
+      text-align: center !important;
+      padding: 0.8rem !important;
+      font-size: 0.9rem !important;
+      font-weight: 700 !important;
+      border-radius: 4px !important;
+      text-decoration: none !important;
+    }
+
   </style>
 </head>
 <body>
