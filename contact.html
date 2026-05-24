@@ -557,24 +557,48 @@
         </div>
       </div>
     </div>
-    <form class="contact-form" method="POST" action="/" data-netlify="true" name="contact-form">
-      <div class="form-row">
-        <div class="cf-group"><label>Your Name</label><input type="text" placeholder="John Smith" required /></div>
-        <div class="cf-group"><label>Phone Number</label><input type="tel" placeholder="(416) 000-0000" /></div>
+        <form class="contact-form" method="POST" action="/" data-netlify="true" name="contact-form">
+      <input type="hidden" name="form-name" value="contact-form" />
+      <div style="display:none;visibility:hidden;" aria-hidden="true">
+        <label>Leave blank <input type="text" name="bot-field" tabindex="-1" autocomplete="off"></label>
       </div>
-      <div class="cf-group"><label>Email Address</label><input type="email" placeholder="you@example.com" required /></div>
+      <div class="form-row">
+        <div class="cf-group">
+          <label for="c-name">Your Name *</label>
+          <input type="text" id="c-name" name="name" required placeholder="John Doe" />
+        </div>
+        <div class="cf-group">
+          <label for="c-phone">Phone Number</label>
+          <input type="tel" id="c-phone" name="phone" placeholder="+56 9 5973 1676" />
+        </div>
+      </div>
       <div class="cf-group">
-        <label>Type of Service</label>
-        <select required>
-          <option value="" disabled selected>Select a service</option>
-          <option>Residential Electrical</option><option>Commercial / Industrial</option>
-          <option>Emergency Service</option><option>EV Charger Installation</option>
-          <option>Panel Upgrade</option><option>Other</option>
+        <label for="c-email">Email Address *</label>
+        <input type="email" id="c-email" name="email" required placeholder="john@example.com" />
+      </div>
+      <div class="cf-group">
+        <label for="c-service">Type of Service</label>
+        <select id="c-service" name="service_type">
+          <option value="">Select a service</option>
+          <option value="Residential Electrical">Residential Electrical</option>
+          <option value="Commercial / Industrial">Commercial / Industrial</option>
+          <option value="Emergency Service">Emergency Service</option>
+          <option value="EV Charger Installation">EV Charger Installation</option>
+          <option value="Panel Upgrade">Panel Upgrade</option>
+          <option value="Other">Other</option>
         </select>
       </div>
-      <div class="cf-group"><label>Message</label><textarea placeholder="Tell us about your project..." required></textarea></div>
+      <div class="cf-group">
+        <label for="c-message">Message</label>
+        <textarea id="c-message" name="message" placeholder="How can we help?"></textarea>
+      </div>
+      <div class="cf-group" style="display:flex;align-items:flex-start;gap:.5rem;font-size:.8rem;color:var(--mid);">
+        <input type="checkbox" name="consent" value="true" required style="margin-top:3px;flex-shrink:0;" />
+        <label>I agree to the Privacy Policy and consent to being contacted regarding my request.</label>
+      </div>
       <button type="submit" class="cf-submit">Send Message</button>
-      <p class="cf-note">We typically respond within 1 business day.</p>
+      <p class="form-status" style="display:none;margin-top:10px;font-weight:500;font-size:.8rem;"></p>
+      <p style="font-size:.75rem;color:var(--mid);margin-top:.75rem;text-align:center;">We typically respond within 1 business day.</p>
     </form>
   </div>
 </section>
