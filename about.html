@@ -393,6 +393,65 @@
       text-decoration: none !important;
     }
 
+
+    /* ══ MOBILE NAV HEIGHT FIX ══ */
+    .mobile-nav {
+      height: 100vh !important;
+      height: 100dvh !important; /* dynamic viewport - accounts for browser chrome */
+      display: none;
+      flex-direction: column !important;
+    }
+    .mobile-nav.open { display: flex !important; }
+
+    /* Links take remaining space but don't overflow */
+    .mobile-links {
+      flex: 1 1 auto !important;
+      overflow-y: auto !important;
+      padding: 4rem 1.5rem 0.5rem !important;
+      min-height: 0 !important; /* critical - allows flex shrink */
+    }
+
+    .mobile-links a {
+      padding: 0.9rem 0.5rem !important;
+      font-size: 1rem !important;
+    }
+
+    /* CTA pinned at bottom - never cut off */
+    .mobile-cta-bottom {
+      flex: 0 0 auto !important; /* never shrink */
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 0.5rem !important;
+      padding: 0.75rem 1.25rem !important;
+      padding-bottom: max(1.25rem, env(safe-area-inset-bottom)) !important;
+      border-top: 1.5px solid rgba(0,0,0,.1) !important;
+      background: var(--off-white) !important;
+    }
+
+    .mobile-cta-bottom a {
+      display: block !important;
+      width: 100% !important;
+      text-align: center !important;
+      padding: 0.85rem 1rem !important;
+      font-size: 0.9rem !important;
+      font-weight: 700 !important;
+      border-radius: 4px !important;
+      text-decoration: none !important;
+      box-sizing: border-box !important;
+    }
+
+    .mobile-cta-bottom .m-call {
+      background: var(--cream) !important;
+      color: var(--blue-dark) !important;
+      border: 1.5px solid var(--blue) !important;
+    }
+
+    .mobile-cta-bottom .m-quote {
+      background: var(--red) !important;
+      color: #fff !important;
+      border: none !important;
+    }
+
   </style>
 </head>
 <body>
