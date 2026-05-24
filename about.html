@@ -305,6 +305,56 @@
       border: none;
     }
 
+
+    /* ══ MOBILE NAV FINAL FIXES ══ */
+
+    /* Bigger X button */
+    .nav-close {
+      position: absolute !important;
+      top: 0.75rem !important;
+      right: 1rem !important;
+      font-size: 2.4rem !important;
+      width: 44px !important;
+      height: 44px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      background: rgba(0,0,0,0.06) !important;
+      border-radius: 50% !important;
+      color: var(--ink) !important;
+      cursor: pointer !important;
+      border: none !important;
+      z-index: 10 !important;
+    }
+
+    /* CTA buttons always visible at bottom */
+    .mobile-cta-bottom {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 0.5rem !important;
+      padding: 1rem 1.25rem 2rem !important;
+      border-top: 1px solid rgba(0,0,0,.1) !important;
+      flex-shrink: 0 !important;
+      background: var(--off-white) !important;
+    }
+
+    .mobile-cta-bottom a {
+      width: 100% !important;
+      max-width: 100% !important;
+      text-align: center !important;
+      font-weight: 700 !important;
+      font-size: 0.9rem !important;
+      padding: 0.85rem 1rem !important;
+      border-radius: 4px !important;
+      text-decoration: none !important;
+      display: block !important;
+    }
+
+    /* Slow down close animation */
+    .mobile-nav {
+      transition: transform 0.3s ease !important;
+    }
+
   </style>
 </head>
 <body>
