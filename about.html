@@ -176,10 +176,47 @@
       header { position:sticky; top:34px; }
     }
 
+
+    /* ══ STICKY HEADER WRAPPER ══ */
+    #site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+    }
+
+    /* Push page body down so content isn't hidden behind fixed header */
+    body { padding-top: 106px; } /* 34px topbar + 72px nav */
+
+    /* Mobile: topbar hidden so only nav height */
+    @media (max-width: 768px) {
+      body { padding-top: 62px; }
+    }
+
+    /* Mobile drawer flush to top */
+    .mobile-nav {
+      top: 0;
+      padding: 0;
+    }
+    .mobile-links {
+      padding: 5rem 1.5rem 1rem;
+    }
+    .nav-close {
+      top: 1rem;
+      right: 1.25rem;
+    }
+
+    /* Shadow when sticky */
+    header {
+      box-shadow: 0 2px 16px rgba(0,0,0,0.10);
+    }
+
   </style>
 </head>
 <body>
 
+<div id="site-header">
 <div class="topbar">
   <div class="topbar-left">
     <span>
@@ -235,6 +272,7 @@
     </div>
   </div>
 </header>
+</div><!-- /site-header -->
 <div class="overlay" id="overlay"></div>
 <nav class="mobile-nav" id="mobileNav">
   <button class="nav-close" id="navClose">×</button>
