@@ -598,20 +598,51 @@
       <div class="h-badge"><span class="h-dot r"></span> Toronto &amp; GTA</div>
     </div>
   </div>
-  <div class="hero-right">
+      <div class="hero-right">
     <div class="quote-card">
       <h3>Request a Free Quote</h3>
-      <div class="form-group"><input type="text" placeholder="Your Name" /></div>
-      <div class="form-group"><input type="email" placeholder="Email Address" /></div>
-      <div class="form-group"><input type="tel" placeholder="Phone Number" /></div>
-      <div class="form-group">
-        <select><option value="" disabled selected>Type of Service</option>
-          <option>Residential Electrical</option><option>Commercial / Industrial</option>
-          <option>Emergency Service</option><option>EV Charger Installation</option><option>Other</option>
-        </select>
-      </div>
-      <div class="form-group"><textarea placeholder="Tell us about your project..."></textarea></div>
-      <button class="btn-submit">Send Request</button>
+      <form name="lead-form" method="POST" action="/" data-netlify="true" class="quote-form">
+        <input type="hidden" name="form-name" value="lead-form" />
+        <div style="display:none;visibility:hidden;" aria-hidden="true">
+          <label>Leave blank <input type="text" name="bot-field" tabindex="-1" autocomplete="off"></label>
+        </div>
+        <div class="form-group">
+          <label for="name">Full Name *</label>
+          <input type="text" id="name" name="name" required placeholder="John Doe" />
+        </div>
+        <div class="form-group">
+          <label for="email">Email Address *</label>
+          <input type="email" id="email" name="email" required placeholder="john@example.com" />
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" name="phone" placeholder="+56 9 5973 1676" />
+        </div>
+        <div class="form-group">
+          <label for="service_type">Type of Service</label>
+          <select id="service_type" name="service_type">
+            <option value="Residential Electrical">Residential Electrical</option>
+            <option value="Commercial / Industrial">Commercial / Industrial</option>
+            <option value="Emergency Service">Emergency Service</option>
+            <option value="EV Charger Installation">EV Charger Installation</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="message">Project Details</label>
+          <textarea id="message" name="message" placeholder="Describe your electrical needs..."></textarea>
+        </div>
+        <div class="form-group" style="display:flex;align-items:flex-start;gap:.5rem;font-size:.75rem;color:var(--mid);">
+          <input type="checkbox" name="consent" value="true" required style="margin-top:3px;flex-shrink:0;" />
+          <label>I agree to the Privacy Policy and consent to being contacted.</label>
+        </div>
+        <button type="submit" class="btn-submit">Send Request</button>
+        <p class="form-status" style="display:none;margin-top:10px;font-weight:500;font-size:.8rem;"></p>
+      </form>
+      <p style="margin-top:12px;font-size:.75rem;color:var(--mid);text-align:center;">
+        Or call us: <a href="tel:+56959731676" style="color:var(--blue-dark);font-weight:600;">+56 9 5973 1676</a> · 
+        <a href="mailto:rodrigopablopezoa@gmail.com" style="color:var(--blue-dark);font-weight:600;">Email us</a>
+      </p>
     </div>
     <a href="tel:+56959731676" class="hero-phone">
       <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.14 13.5a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.05 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 18z"/></svg>
