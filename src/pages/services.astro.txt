@@ -1,0 +1,222 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import TrustBadge from "../components/TrustBadge.astro";
+
+const PHONE_RAW = "+14168387519";
+const PHONE     = "+1 (416) 838-7519";
+
+const services = [
+  {
+    id: "residential",
+    icon: "home",
+    label: "Residential",
+    title: "Residential Electrical Services",
+    desc: "From new home wiring to panel upgrades and everything in between, Eclipse Electrical handles all your residential electrical needs in Toronto and the GTA. Our licensed Master Electricians ensure every job is done safely and to code.",
+    items: [
+      "Electrical panel upgrades & replacement",
+      "New wiring & rewiring",
+      "Lights & ceiling fan installation",
+      "Outlet & switch installation",
+      "GFCI & AFCI protection",
+      "Smoke & carbon monoxide detector wiring",
+      "Home renovation electrical work",
+      "Electrical safety inspections",
+      "Generator connections",
+    ],
+  },
+  {
+    id: "commercial",
+    icon: "briefcase",
+    label: "Commercial & Industrial",
+    title: "Commercial & Industrial Electrical",
+    desc: "We provide comprehensive commercial and industrial electrical services across Toronto and the GTA. From retail fit-outs to full industrial installations, our team delivers safe, reliable work that meets all Ontario Electrical Safety Code requirements.",
+    items: [
+      "Commercial wiring & installations",
+      "Office & retail fit-outs",
+      "Industrial electrical maintenance",
+      "Three-phase power installations",
+      "Lighting design & installation",
+      "Emergency exit & safety lighting",
+      "Data & communications wiring",
+      "Electrical panel upgrades",
+      "Preventive maintenance programs",
+    ],
+  },
+  {
+    id: "emergency",
+    icon: "zap",
+    label: "Emergency Service",
+    title: "24-Hour Emergency Electrician",
+    desc: "Electrical emergencies can happen at any hour. Eclipse Electrical provides 24-hour emergency service to residential and commercial clients throughout Toronto and the GTA. Don't wait — call us now.",
+    items: [
+      "Power outage diagnosis & repair",
+      "Tripped breakers & blown fuses",
+      "Sparking outlets or wiring",
+      "Electrical fire damage assessment",
+      "Storm & flood electrical damage",
+      "After-hours emergency response",
+    ],
+  },
+  {
+    id: "ev-charger",
+    icon: "plug",
+    label: "EV Charger",
+    title: "EV Charger Installation Toronto",
+    desc: "Ready to charge your electric vehicle at home or at your business? Eclipse Electrical provides professional Level 1 and Level 2 EV charger installation across Toronto and the GTA. We handle permits, panel upgrades, and full installation.",
+    items: [
+      "Level 1 (120V) charger installation",
+      "Level 2 (240V) charger installation",
+      "Panel capacity assessment",
+      "ESA permit & inspection",
+      "Outdoor & garage installations",
+      "Commercial fleet charging stations",
+    ],
+  },
+  {
+    id: "switchboard",
+    icon: "server",
+    label: "Switchboard Upgrades",
+    title: "Electrical Switchboard Upgrades",
+    desc: "An outdated or overloaded electrical panel is a safety hazard. Eclipse Electrical provides full electrical switchboard upgrade and installation services in Toronto. We assess your current load, recommend the right solution, and complete all work to code.",
+    items: [
+      "100A to 200A panel upgrades",
+      "Sub-panel installation",
+      "Federal Pacific & Zinsco replacements",
+      "Circuit breaker replacement",
+      "Load analysis & capacity planning",
+      "ESA-approved work",
+    ],
+  },
+  {
+    id: "inspections",
+    icon: "shield",
+    label: "Safety Inspections",
+    title: "Electrical Safety Inspections",
+    desc: "Your family's and business's safety is our priority. Our certified Master Electricians perform thorough electrical safety inspections in Toronto, identifying potential hazards before they become serious problems.",
+    items: [
+      "Pre-purchase home electrical inspections",
+      "Insurance-required inspections",
+      "Older home wiring assessments",
+      "Commercial safety compliance checks",
+      "WETT-adjacent panel inspections",
+      "Detailed written reports provided",
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Electrical Services Toronto GTA | Eclipse Electrical Services"
+  description="Complete residential and commercial electrical services in Toronto and GTA — panel upgrades, EV chargers, emergency service, safety inspections, and more. Licensed Master Electricians."
+  currentPath="/services"
+>
+
+<section class="page-banner">
+  <h1>Our Electrical Services</h1>
+  <p>Licensed Master Electricians serving Toronto &amp; GTA — residential, commercial, and emergency electrical work.</p>
+</section>
+
+<TrustBadge />
+
+<!-- Services Grid -->
+<section class="services-section" aria-label="All services">
+  <div class="services-inner">
+    <div class="section-label">What We Do</div>
+    <h2 class="section-h2">Complete Electrical Services in Toronto</h2>
+    <p class="services-intro">Eclipse Electrical Services provides a full range of electrical services for homeowners, businesses, and industrial clients throughout Toronto and the Greater Toronto Area. All work is performed by fully licensed and insured Master Electricians.</p>
+
+    <div class="services-grid">
+      {services.map((s) => (
+        <article class="service-card" id={s.id}>
+          <div class="sc-header">
+            <div class="sc-tag">{s.label}</div>
+            <h3>{s.title}</h3>
+            <p>{s.desc}</p>
+          </div>
+          <ul class="sc-list">
+            {s.items.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+          <a href="/contact" class="sc-cta">Get a Free Estimate →</a>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- Mid CTA -->
+<section class="mid-cta" aria-label="Contact us">
+  <div class="mid-cta-inner">
+    <h2>Need an Electrician in Toronto? We're Ready.</h2>
+    <p>Call us for a free, no-obligation estimate. Our licensed Master Electricians are available Mon–Sat 8am–8pm, with 24-hour emergency response.</p>
+    <div class="mid-cta-buttons">
+      <a href={`tel:${PHONE_RAW}`} class="btn-cta-yellow">📞 Call Now: {PHONE}</a>
+      <a href="/contact" class="btn-cta-outline">Book Online</a>
+    </div>
+  </div>
+</section>
+
+</BaseLayout>
+
+<style>
+  .services-section { padding: 5rem 2rem; background: var(--off-white); }
+  .services-inner { max-width: 1100px; margin: 0 auto; }
+  .services-intro { font-size: .97rem; line-height: 1.8; color: var(--mid); max-width: 740px; margin-bottom: 3rem; }
+
+  .services-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.75rem; }
+
+  .service-card {
+    background: #fff; border-radius: 8px; padding: 2rem;
+    border: 1px solid rgba(0,0,0,.07);
+    display: flex; flex-direction: column; gap: 1.25rem;
+    transition: box-shadow .2s, transform .2s;
+  }
+  .service-card:hover { box-shadow: 0 8px 28px rgba(0,0,0,.09); transform: translateY(-2px); }
+
+  .sc-tag {
+    display: inline-block; font-size: .66rem; font-weight: 700;
+    letter-spacing: .2em; text-transform: uppercase;
+    color: var(--red); background: rgba(192,57,43,.08);
+    padding: .2rem .65rem; border-radius: 2px; margin-bottom: .3rem;
+  }
+  .sc-header h3 {
+    font-family: "Montserrat",sans-serif; font-weight: 900;
+    font-size: 1rem; color: var(--ink); margin-bottom: .65rem;
+  }
+  .sc-header p { font-size: .85rem; line-height: 1.7; color: var(--mid); }
+
+  .sc-list { list-style: none; display: flex; flex-direction: column; gap: .5rem; flex: 1; }
+  .sc-list li {
+    font-size: .82rem; color: var(--mid); padding-left: 1.1rem;
+    position: relative; line-height: 1.5;
+  }
+  .sc-list li::before { content: "✓"; position: absolute; left: 0; color: var(--blue-dark); font-weight: 700; font-size: .75rem; }
+
+  .sc-cta {
+    display: inline-block; font-size: .8rem; font-weight: 700;
+    color: var(--blue-dark); text-decoration: none;
+    border-top: 1px solid rgba(0,0,0,.07); padding-top: 1rem;
+    transition: color .15s;
+  }
+  .sc-cta:hover { color: var(--red); }
+
+  .mid-cta { background: var(--ink); padding: 4rem 2rem; }
+  .mid-cta-inner { max-width: 900px; margin: 0 auto; text-align: center; }
+  .mid-cta h2 { font-family: "Montserrat",sans-serif; font-weight: 900; font-size: clamp(1.5rem,3.5vw,2.2rem); color: #fff; margin-bottom: 1rem; }
+  .mid-cta p { font-size: .97rem; line-height: 1.75; color: rgba(255,255,255,.65); max-width: 640px; margin: 0 auto 2rem; }
+  .mid-cta-buttons { display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+  .btn-cta-yellow { padding: .85rem 2rem; background: var(--red); color: #fff; font-family: "Montserrat",sans-serif; font-weight: 700; font-size: .88rem; letter-spacing: .08em; text-transform: uppercase; border: none; border-radius: 3px; cursor: pointer; text-decoration: none; transition: background .18s; }
+  .btn-cta-yellow:hover { background: #a93226; }
+  .btn-cta-outline { padding: .85rem 2rem; background: transparent; color: #fff; font-family: "Montserrat",sans-serif; font-weight: 700; font-size: .88rem; letter-spacing: .08em; text-transform: uppercase; border: 2px solid rgba(255,255,255,.3); border-radius: 3px; cursor: pointer; text-decoration: none; transition: border-color .18s; }
+  .btn-cta-outline:hover { border-color: #fff; }
+
+  @media (max-width: 900px) {
+    .services-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 600px) {
+    .services-section { padding: 3rem 1.25rem; }
+    .services-grid { grid-template-columns: 1fr; }
+    .mid-cta { padding: 3rem 1.25rem; }
+  }
+</style>
