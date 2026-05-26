@@ -1,0 +1,150 @@
+---
+/**
+ * Header.astro
+ *
+ * This component is already embedded inside BaseLayout.astro for a
+ * single-file layout pattern. Export it here as a standalone
+ * reusable component if you ever want to compose layouts manually.
+ *
+ * Props match BaseLayout.Props so active nav state propagates.
+ */
+export interface Props {
+  currentPath?: string;
+}
+
+const { currentPath = "/" } = Astro.props;
+
+const PHONE     = "+1 (416) 838-7519";
+const PHONE_RAW = "+14168387519";
+---
+
+<div id="site-header">
+  <!-- Top Bar -->
+  <div class="topbar">
+    <div class="topbar-left">
+      <span>
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.14 13.5a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.05 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 18z"/>
+        </svg>
+        <b>{PHONE}</b>
+      </span>
+      <span class="dot-sep">·</span>
+      <span>Mon–Sat <b>8am – 8pm</b></span>
+      <span class="dot-sep">·</span>
+      <span>24-Hour Emergency Service</span>
+    </div>
+    <div class="avail-pill">
+      <span class="green-dot" aria-hidden="true"></span>Taking new jobs
+    </div>
+  </div>
+
+  <header>
+    <div class="nav-main">
+      <!-- Logo -->
+      <a href="/" class="logo" aria-label="Eclipse Electrical Services – Home">
+        <img src="/logo.png" alt="Eclipse Electrical Services Ltd" width="52" height="52" />
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="/"         class={currentPath === "/"         ? "active" : ""}>Home</a>
+        <a href="/services" class={currentPath === "/services" ? "active" : ""}>Services</a>
+        <a href="/about"    class={currentPath === "/about"    ? "active" : ""}>About Us</a>
+        <a href="/gallery"  class={currentPath === "/gallery"  ? "active" : ""}>Gallery</a>
+        <a href="/contact"  class={currentPath === "/contact"  ? "active" : ""}>Contact</a>
+      </nav>
+
+      <!-- Desktop Actions -->
+      <div class="nav-right">
+        <a href={`tel:${PHONE_RAW}`} class="phone-link" aria-label="Call us">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.14 13.5a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.05 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 18z"/>
+          </svg>
+          {PHONE}
+        </a>
+        <div class="divider" aria-hidden="true"></div>
+        <a href="/contact" class="btn-quote">Free Estimate</a>
+      </div>
+
+      <!-- Hamburger -->
+      <button class="ham" id="hamBtn" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <!-- Ticker -->
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker-track">
+        <span class="ticker-item"><span class="ticker-dot r"></span> Licensed &amp; Insured</span><span class="ticker-sep">|</span>
+        <span class="ticker-item"><span class="ticker-dot b"></span> Residential &amp; Commercial</span><span class="ticker-sep">|</span>
+        <span class="ticker-item"><span class="ticker-dot r"></span> 24-Hour Emergency</span><span class="ticker-sep">|</span>
+        <span class="ticker-item"><span class="ticker-dot b"></span> EV Charger Installation</span><span class="ticker-sep">|</span>
+        <span class="ticker-item"><span class="ticker-dot r"></span> Toronto &amp; GTA</span><span class="ticker-sep">|</span>
+        <span class="ticker-item"><span class="ticker-dot b"></span> Master Electricians</span><span class="ticker-sep">|</span>
+        <span class="ticker-item"><span class="ticker-dot r"></span> Free Estimates</span><span class="ticker-sep">|</span>
+        <!-- Duplicate for seamless loop -->
+        <span class="ticker-item"><span class="ticker-dot r"></span> Licensed &amp; Insured</span><span class="ticker-sep">|</span>
+        <span class="ticker-item"><span class="ticker-dot b"></span> Residential &amp; Commercial</span><span class="ticker-sep">|</span>
+        <span class="ticker-item"><span class="ticker-dot r"></span> 24-Hour Emergency</span><span class="ticker-sep">|</span>
+        <span class="ticker-item"><span class="ticker-dot b"></span> EV Charger Installation</span><span class="ticker-sep">|</span>
+        <span class="ticker-item"><span class="ticker-dot r"></span> Toronto &amp; GTA</span><span class="ticker-sep">|</span>
+        <span class="ticker-item"><span class="ticker-dot b"></span> Master Electricians</span><span class="ticker-sep">|</span>
+        <span class="ticker-item"><span class="ticker-dot r"></span> Free Estimates</span><span class="ticker-sep">|</span>
+      </div>
+    </div>
+  </header>
+</div><!-- /site-header -->
+
+<!-- Mobile Overlay -->
+<div class="overlay" id="overlay"></div>
+
+<!-- Mobile Drawer -->
+<nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation" aria-hidden="true">
+  <button class="nav-close" id="navClose" aria-label="Close menu">×</button>
+  <div class="mobile-links">
+    <a href="/"         class={currentPath === "/"         ? "active" : ""}>Home</a>
+    <a href="/services" class={currentPath === "/services" ? "active" : ""}>Services</a>
+    <a href="/about"    class={currentPath === "/about"    ? "active" : ""}>About Us</a>
+    <a href="/gallery"  class={currentPath === "/gallery"  ? "active" : ""}>Gallery</a>
+    <a href="/contact"  class={currentPath === "/contact"  ? "active" : ""}>Contact</a>
+  </div>
+  <div class="mobile-cta-bottom">
+    <a href={`tel:${PHONE_RAW}`} class="m-call">📞 {PHONE}</a>
+    <a href="/contact" class="m-quote">Free Estimate</a>
+  </div>
+</nav>
+
+<script>
+  const hamBtn    = document.getElementById("hamBtn")!;
+  const mobileNav = document.getElementById("mobileNav")!;
+  const overlay   = document.getElementById("overlay")!;
+  const navClose  = document.getElementById("navClose")!;
+
+  function openMenu() {
+    hamBtn.classList.add("open");
+    hamBtn.setAttribute("aria-expanded", "true");
+    mobileNav.classList.add("open");
+    mobileNav.setAttribute("aria-hidden", "false");
+    overlay.classList.add("open");
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeMenu() {
+    hamBtn.classList.remove("open");
+    hamBtn.setAttribute("aria-expanded", "false");
+    mobileNav.classList.remove("open");
+    mobileNav.setAttribute("aria-hidden", "true");
+    overlay.classList.remove("open");
+    document.body.style.overflow = "";
+  }
+
+  hamBtn.addEventListener("click", openMenu);
+  navClose.addEventListener("click", closeMenu);
+  overlay.addEventListener("click", closeMenu);
+  document.querySelectorAll(".mobile-links a").forEach(link => {
+    link.addEventListener("click", closeMenu);
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeMenu();
+  });
+</script>
