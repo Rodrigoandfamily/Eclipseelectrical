@@ -1,0 +1,419 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const PHONE_RAW = "+14168387519";
+const PHONE     = "+1 (416) 838-7519";
+---
+
+<BaseLayout
+  title="Eclipse Electrical Services | Residential & Commercial Electrician Toronto GTA"
+  description="Expert residential and commercial electrical services in Toronto and GTA. Licensed Master Electricians. Call +1 (416) 838-7519 for a free estimate."
+  currentPath="/"
+>
+
+<!-- ── HERO ── -->
+<section class="hero" aria-label="Hero">
+  <div class="hero-redbar"></div>
+  <div class="hero-bg" aria-hidden="true"></div>
+
+  <div class="hero-content">
+    <div class="hero-label">Toronto &amp; GTA — Serving Since 1999</div>
+    <h1>Residential &amp; <span>Commercial</span> Electrician</h1>
+    <p>Eclipse Electrical Services is your leading local electrical contractor in Toronto – GTA. Fully trained, certified Master Electricians specializing in all phases of electrical work — wiring, installation, repair and maintenance.</p>
+    <div class="hero-cta">
+      <a href="/contact" class="btn-primary">Free Estimate</a>
+      <a href={`tel:${PHONE_RAW}`} class="btn-secondary">{PHONE}</a>
+    </div>
+    <div class="hero-badges">
+      <div class="h-badge"><span class="h-dot r"></span> Licensed &amp; Insured</div>
+      <div class="h-badge"><span class="h-dot b"></span> 24-Hr Emergency</div>
+      <div class="h-badge"><span class="h-dot r"></span> Toronto &amp; GTA</div>
+    </div>
+  </div>
+
+  <!-- Quote Card -->
+  <div class="hero-right">
+    <div class="quote-card">
+      <h3>Request a Free Quote</h3>
+      <form
+        name="lead-form"
+        method="POST"
+        action="/contact?success=true"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+        class="quote-form"
+        aria-label="Free quote request form"
+      >
+        <input type="hidden" name="form-name" value="lead-form" />
+        <!-- Honeypot -->
+        <div style="display:none;visibility:hidden;" aria-hidden="true">
+          <label>Leave blank <input type="text" name="bot-field" tabindex="-1" autocomplete="off" /></label>
+        </div>
+
+        <div class="form-group">
+          <label for="h-name">Full Name *</label>
+          <input type="text" id="h-name" name="name" required placeholder="John Doe" />
+        </div>
+        <div class="form-group">
+          <label for="h-email">Email Address *</label>
+          <input type="email" id="h-email" name="email" required placeholder="john@example.com" />
+        </div>
+        <div class="form-group">
+          <label for="h-phone">Phone Number</label>
+          <input type="tel" id="h-phone" name="phone" placeholder="+1 (416) 838-7519" />
+        </div>
+        <div class="form-group">
+          <label for="h-service">Type of Service</label>
+          <select id="h-service" name="service_type">
+            <option value="Residential Electrical">Residential Electrical</option>
+            <option value="Commercial / Industrial">Commercial / Industrial</option>
+            <option value="Emergency Service">Emergency Service</option>
+            <option value="EV Charger Installation">EV Charger Installation</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="h-message">Project Details</label>
+          <textarea id="h-message" name="message" placeholder="Describe your electrical needs..."></textarea>
+        </div>
+        <div class="checkbox-row">
+          <input type="checkbox" id="h-consent" name="consent" value="true" required />
+          <label for="h-consent">I agree to the <a href="/privacy">Privacy Policy</a> and consent to being contacted regarding my request.</label>
+        </div>
+        <button type="submit" class="btn-submit">Send Request</button>
+      </form>
+      <p style="margin-top:12px;font-size:.75rem;color:var(--mid);text-align:center;">
+        Or call us: <a href={`tel:${PHONE_RAW}`} style="color:var(--blue-dark);font-weight:600;">{PHONE}</a>
+      </p>
+    </div>
+
+    <a href={`tel:${PHONE_RAW}`} class="hero-phone">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.14 13.5a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.05 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 18z"/></svg>
+      Or call us: {PHONE}
+    </a>
+  </div>
+</section>
+
+<!-- ── WHY CHOOSE US ── -->
+<section class="why-strip" aria-label="Why choose Eclipse Electrical">
+  <div class="why-inner">
+    <div class="why-item">
+      <div class="why-icon">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+      </div>
+      <div>
+        <h4>Fast Response</h4>
+        <p>We show up on time and get the job done efficiently — every time.</p>
+      </div>
+    </div>
+    <div class="why-item">
+      <div class="why-icon">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      </div>
+      <div>
+        <h4>24-Hour Emergency</h4>
+        <p>Electrical emergencies don't wait — neither do we. Available 24/7.</p>
+      </div>
+    </div>
+    <div class="why-item">
+      <div class="why-icon">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <div>
+        <h4>Licensed &amp; Insured</h4>
+        <p>Fully licensed Master Electricians — your safety is our priority.</p>
+      </div>
+    </div>
+    <div class="why-item">
+      <div class="why-icon">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+      </div>
+      <div>
+        <h4>Competitive Pricing</h4>
+        <p>Quality work at a fair price. Free no-obligation estimates.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── QUICK SERVICES ── -->
+<section class="quick-services" aria-label="Our services overview">
+  <div class="quick-inner">
+    <div class="section-label">What We Offer</div>
+    <h2 class="section-h2">Electrical Services in Toronto</h2>
+    <p class="quick-intro">We specialize in electrical building maintenance, upgrades, installs, and fit-outs across Toronto and the GTA. Our fully licensed electricians are equipped to handle any job — big or small.</p>
+    <div class="quick-grid">
+      <article class="quick-card">
+        <div class="quick-card-icon r" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </div>
+        <div>
+          <h3>Lights &amp; Fans Install</h3>
+          <p>Install or upgrade lighting systems, power units, or ceiling fans for your home or business in Toronto.</p>
+        </div>
+      </article>
+      <article class="quick-card">
+        <div class="quick-card-icon b" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+        </div>
+        <div>
+          <h3>Electrical Maintenance</h3>
+          <p>Regular electrical maintenance in Toronto — we'll be there when you need us.</p>
+        </div>
+      </article>
+      <article class="quick-card">
+        <div class="quick-card-icon r" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        </div>
+        <div>
+          <h3>Faults &amp; Repairs</h3>
+          <p>From simple repairs to a complete overhaul — we ensure your wiring and fittings are updated to the highest level.</p>
+        </div>
+      </article>
+      <article class="quick-card">
+        <div class="quick-card-icon b" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <div>
+          <h3>Installs &amp; Upgrades</h3>
+          <p>New electrical installations or upgrades to existing buildings — we deliver the highest standards.</p>
+        </div>
+      </article>
+      <article class="quick-card">
+        <div class="quick-card-icon r" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+        </div>
+        <div>
+          <h3>Switchboard Upgrades</h3>
+          <p>Full electrical switchboard upgrade and installation service in Toronto.</p>
+        </div>
+      </article>
+      <article class="quick-card">
+        <div class="quick-card-icon b" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div>
+          <h3>Safety Inspections</h3>
+          <p>Your safety is our priority — professional and thorough electrical safety inspections in Toronto.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ── MID-PAGE CTA ── -->
+<section class="mid-cta" aria-label="Call to action">
+  <div class="mid-cta-inner">
+    <h2>Looking for a Qualified Electrician in Toronto You Can Count On?</h2>
+    <p>Whether it's a small electrical fault or an entire shop fit-out, our licensed electricians in Toronto – GTA are ready to help. Quality work done efficiently and on budget.</p>
+    <div class="mid-cta-buttons">
+      <a href={`tel:${PHONE_RAW}`} class="btn-cta-yellow">📞 Call Now: {PHONE}</a>
+      <a href="/contact" class="btn-cta-outline">Get a Free Estimate</a>
+    </div>
+  </div>
+</section>
+
+</BaseLayout>
+
+<style>
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    min-height: 88vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background-image: url("/hero-bg.jpg");
+    background-size: cover;
+    background-position: center;
+    z-index: 0;
+  }
+  .hero-bg::after {
+    content: "";
+    position: absolute; inset: 0;
+    background: linear-gradient(to right, rgba(244,241,236,.62) 0%, rgba(244,241,236,.48) 40%, rgba(118,173,213,.75) 100%);
+  }
+  .hero-redbar { position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--red); z-index: 10; }
+  .hero-content { position: relative; z-index: 5; padding: 5rem 2.5rem 4rem; max-width: 580px; width: 100%; }
+  .hero-label {
+    display: inline-flex; align-items: center; gap: .5rem;
+    font-size: .7rem; font-weight: 600; letter-spacing: .25em; text-transform: uppercase;
+    color: var(--red); margin-bottom: 1.25rem;
+  }
+  .hero-label::before { content: ""; display: block; width: 18px; height: 2px; background: var(--red); }
+  .hero h1 {
+    font-family: "Montserrat", sans-serif; font-weight: 900;
+    font-size: clamp(2.2rem,5.5vw,3.6rem); line-height: 1.1;
+    color: var(--ink); margin-bottom: 1.25rem;
+    letter-spacing: -.02em; text-shadow: 0 1px 10px rgba(255,255,255,.6);
+  }
+  .hero h1 span { color: var(--blue-dark); }
+  .hero p {
+    font-size: .97rem; line-height: 1.75; color: #111;
+    max-width: 480px; margin-bottom: 2.25rem;
+    font-weight: 500; text-shadow: 0 1px 8px rgba(255,255,255,.55);
+  }
+  .hero-cta { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+  .hero-badges {
+    display: flex; align-items: center; gap: 1.5rem;
+    margin-top: 2.5rem; padding-top: 2rem;
+    border-top: 1px solid rgba(0,0,0,.15); flex-wrap: wrap;
+  }
+  .h-badge { display: flex; align-items: center; gap: .5rem; font-size: .72rem; font-weight: 700; color: var(--ink); }
+  .h-dot { width: 8px; height: 8px; border-radius: 50%; }
+  .h-dot.r { background: var(--red); }
+  .h-dot.b { background: var(--blue-dark); }
+
+  .hero-right {
+    position: absolute; right: 0; top: 0; bottom: 0; width: 38%; z-index: 5;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    padding: 5rem 2.5rem 4rem;
+  }
+  .quote-card {
+    background: rgba(255,255,255,.96); border-radius: 6px; padding: 2rem;
+    width: 100%; max-width: 320px; box-shadow: 0 8px 40px rgba(0,0,0,.2);
+  }
+  .quote-card h3 {
+    font-family: "Montserrat", sans-serif; font-weight: 800; font-size: .85rem;
+    letter-spacing: .12em; text-transform: uppercase; color: var(--ink);
+    margin-bottom: 1.25rem; padding-bottom: .75rem; border-bottom: 2px solid var(--red);
+  }
+  .quote-form .form-group { margin-bottom: .75rem; width: 100%; }
+  .quote-form label {
+    display: block; font-size: .78rem; font-weight: 600;
+    letter-spacing: .05em; color: var(--ink); margin-bottom: .3rem;
+  }
+  .quote-form input[type="text"],
+  .quote-form input[type="email"],
+  .quote-form input[type="tel"],
+  .quote-form select,
+  .quote-form textarea {
+    width: 100%; display: block; background: var(--off-white);
+    border: 1px solid rgba(0,0,0,.12); border-radius: 3px;
+    padding: .65rem .9rem; font-family: "Open Sans", sans-serif;
+    font-size: .84rem; color: var(--ink); outline: none;
+    box-sizing: border-box; transition: border-color .18s;
+  }
+  .quote-form input::placeholder,
+  .quote-form textarea::placeholder { color: #aaa; }
+  .quote-form input:focus,
+  .quote-form select:focus,
+  .quote-form textarea:focus { border-color: var(--blue); }
+  .quote-form textarea { resize: none; height: 72px; }
+  .checkbox-row {
+    display: flex !important; flex-direction: row !important;
+    align-items: flex-start !important; gap: .6rem !important;
+    padding: .5rem 0 !important;
+  }
+  .checkbox-row input[type="checkbox"] {
+    width: 16px !important; height: 16px !important;
+    margin-top: 2px !important; flex-shrink: 0 !important;
+    cursor: pointer !important;
+  }
+  .checkbox-row label {
+    font-size: .75rem !important; font-weight: 400 !important;
+    color: var(--mid) !important; line-height: 1.5 !important;
+    margin: 0 !important; cursor: pointer !important;
+  }
+  .checkbox-row label a { color: var(--blue-dark); text-decoration: underline; }
+  .btn-submit {
+    width: 100%; padding: .8rem;
+    background: var(--red); color: #fff;
+    font-family: "Montserrat", sans-serif; font-weight: 700;
+    font-size: .8rem; letter-spacing: .1em; text-transform: uppercase;
+    border: none; border-radius: 3px; cursor: pointer; transition: background .18s;
+    margin-top: .5rem;
+  }
+  .btn-submit:hover { background: #a93226; }
+  .hero-phone {
+    margin-top: 1.25rem; display: flex; align-items: center; gap: .5rem;
+    color: #fff; font-size: .82rem; font-weight: 600; text-decoration: none;
+    text-shadow: 0 1px 4px rgba(0,0,0,.3);
+  }
+  .hero-phone svg { width: 14px; height: 14px; stroke: var(--red); fill: none; stroke-width: 2; stroke-linecap: round; }
+
+  /* ── WHY STRIP ── */
+  .why-strip { background: var(--blue); padding: 2.5rem 2rem; }
+  .why-inner {
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(4,1fr); gap: 1.5rem;
+  }
+  .why-item { display: flex; align-items: flex-start; gap: .85rem; }
+  .why-icon {
+    width: 42px; height: 42px; background: rgba(255,255,255,.15);
+    border-radius: 50%; display: flex; align-items: center;
+    justify-content: center; flex-shrink: 0;
+  }
+  .why-icon svg { width: 18px; height: 18px; stroke: #fff; fill: none; stroke-width: 2; stroke-linecap: round; }
+  .why-item h4 { font-family: "Montserrat", sans-serif; font-weight: 800; font-size: .85rem; color: #fff; margin-bottom: .2rem; }
+  .why-item p { font-size: .75rem; color: rgba(255,255,255,.7); line-height: 1.5; }
+
+  /* ── QUICK SERVICES ── */
+  .quick-services {
+    background: var(--off-white); padding: 4.5rem 2rem;
+    border-top: 1px solid rgba(0,0,0,.06);
+  }
+  .quick-inner { max-width: 1100px; margin: 0 auto; }
+  .quick-intro { font-size: .97rem; line-height: 1.75; color: var(--mid); max-width: 680px; margin-bottom: 3rem; }
+  .quick-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
+  .quick-card {
+    background: #fff; border-radius: 6px; padding: 1.75rem 1.5rem;
+    border: 1px solid rgba(0,0,0,.07); display: flex; align-items: flex-start; gap: 1rem;
+    transition: box-shadow .2s, transform .2s;
+  }
+  .quick-card:hover { box-shadow: 0 6px 20px rgba(0,0,0,.08); transform: translateY(-2px); }
+  .quick-card-icon { width: 46px; height: 46px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .quick-card-icon.r { background: rgba(192,57,43,.1); }
+  .quick-card-icon.b { background: rgba(118,173,213,.15); }
+  .quick-card-icon svg { width: 20px; height: 20px; }
+  .quick-card-icon.r svg { stroke: var(--red); fill: none; stroke-width: 1.8; stroke-linecap: round; }
+  .quick-card-icon.b svg { stroke: var(--blue-dark); fill: none; stroke-width: 1.8; stroke-linecap: round; }
+  .quick-card h3 { font-family: "Montserrat", sans-serif; font-weight: 800; font-size: .88rem; color: var(--ink); margin-bottom: .3rem; }
+  .quick-card p { font-size: .8rem; line-height: 1.6; color: var(--mid); }
+
+  /* ── MID CTA ── */
+  .mid-cta { background: var(--ink); padding: 4rem 2rem; }
+  .mid-cta-inner { max-width: 900px; margin: 0 auto; text-align: center; }
+  .mid-cta h2 {
+    font-family: "Montserrat", sans-serif; font-weight: 900;
+    font-size: clamp(1.5rem,3.5vw,2.2rem); color: #fff;
+    line-height: 1.25; margin-bottom: 1rem;
+  }
+  .mid-cta p { font-size: .97rem; line-height: 1.75; color: rgba(255,255,255,.65); max-width: 640px; margin: 0 auto 2rem; }
+  .mid-cta-buttons { display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+  .btn-cta-yellow {
+    padding: .85rem 2rem; background: var(--red); color: #fff;
+    font-family: "Montserrat", sans-serif; font-weight: 700; font-size: .88rem;
+    letter-spacing: .08em; text-transform: uppercase; border: none; border-radius: 3px;
+    cursor: pointer; text-decoration: none; transition: background .18s, transform .12s;
+  }
+  .btn-cta-yellow:hover { background: #a93226; transform: translateY(-1px); }
+  .btn-cta-outline {
+    padding: .85rem 2rem; background: transparent; color: #fff;
+    font-family: "Montserrat", sans-serif; font-weight: 700; font-size: .88rem;
+    letter-spacing: .08em; text-transform: uppercase;
+    border: 2px solid rgba(255,255,255,.3); border-radius: 3px;
+    cursor: pointer; text-decoration: none; transition: border-color .18s, color .18s;
+  }
+  .btn-cta-outline:hover { border-color: #fff; color: #fff; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .hero { flex-direction: column; min-height: auto; }
+    .hero-bg::after { background: linear-gradient(to bottom, rgba(244,241,236,.62) 0%, rgba(244,241,236,.52) 50%, rgba(118,173,213,.78) 100%); }
+    .hero-content { padding: 3.5rem 1.5rem 2rem; max-width: 100%; }
+    .hero-right { position: static; width: 100%; padding: 2rem 1.5rem 3rem; }
+    .quote-card { max-width: 100%; }
+    .why-inner { grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+    .quick-services { padding: 3rem 1.25rem; }
+    .quick-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .mid-cta { padding: 3rem 1.25rem; }
+  }
+  @media (max-width: 480px) {
+    .why-inner { grid-template-columns: 1fr; }
+    .quick-grid { grid-template-columns: 1fr; }
+  }
+</style>
