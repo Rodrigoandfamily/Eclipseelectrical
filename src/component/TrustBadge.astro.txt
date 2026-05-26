@@ -1,0 +1,96 @@
+---
+/**
+ * TrustBadge.astro
+ *
+ * Reusable trust signals strip. Drop anywhere in a page:
+ *   <TrustBadge />
+ * or with a dark background variant:
+ *   <TrustBadge dark />
+ */
+export interface Props {
+  dark?: boolean;
+}
+
+const { dark = false } = Astro.props;
+---
+
+<div class:list={["trust-strip", { "trust-strip--dark": dark }]} role="list" aria-label="Trust signals">
+  <div class="trust-badge-item" role="listitem">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+    <span>Licensed &amp; Insured</span>
+  </div>
+  <div class="trust-badge-item" role="listitem">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+    <span>Done Right the First Time</span>
+  </div>
+  <div class="trust-badge-item" role="listitem">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+    <span>Fast Response</span>
+  </div>
+  <div class="trust-badge-item" role="listitem">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+    <span>24-Hour Emergency</span>
+  </div>
+  <div class="trust-badge-item" role="listitem">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+    <span>Free Estimates</span>
+  </div>
+  <div class="trust-badge-item" role="listitem">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+    <span>Master Electricians</span>
+  </div>
+</div>
+
+<style>
+  .trust-strip {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1.5rem 2rem;
+    padding: 1.75rem 2rem;
+    background: var(--cream);
+    border-top: 1px solid rgba(0,0,0,.07);
+    border-bottom: 1px solid rgba(0,0,0,.07);
+  }
+
+  .trust-strip--dark {
+    background: rgba(255,255,255,.04);
+    border-color: rgba(255,255,255,.08);
+  }
+
+  .trust-badge-item {
+    display: flex;
+    align-items: center;
+    gap: .55rem;
+    font-size: .78rem;
+    font-weight: 600;
+    color: var(--mid);
+    letter-spacing: .04em;
+    white-space: nowrap;
+  }
+
+  .trust-strip--dark .trust-badge-item {
+    color: rgba(255,255,255,.6);
+  }
+
+  .trust-badge-item svg {
+    width: 15px;
+    height: 15px;
+    stroke: var(--blue-dark);
+    fill: none;
+    stroke-width: 2;
+    stroke-linecap: round;
+    flex-shrink: 0;
+  }
+
+  .trust-strip--dark .trust-badge-item svg {
+    stroke: var(--blue);
+  }
+
+  @media (max-width: 768px) {
+    .trust-strip {
+      gap: 1rem 1.5rem;
+      padding: 1.25rem 1.25rem;
+    }
+  }
+</style>
