@@ -1,0 +1,69 @@
+---
+/**
+ * Footer.astro
+ *
+ * Standalone reusable footer component. Already embedded in
+ * BaseLayout.astro — use this if you compose layouts manually.
+ */
+---
+
+<footer class="footer" aria-label="Site footer">
+  <div class="footer-inner">
+    <!-- Brand / About -->
+    <div class="footer-brand footer-col">
+      <img src="/logo.png" alt="Eclipse Electrical Services Ltd" width="56" height="56" loading="lazy" />
+      <p>Your local leading electrical contractor in Toronto – GTA. Licensed, insured, and dedicated to doing the job right the first time.</p>
+      <div class="footer-social">
+        <a href="https://www.facebook.com/eclipseelectricalservicesltd/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+        <a href="/contact" aria-label="Contact us">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Services -->
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="/services">Residential Electrical</a></li>
+        <li><a href="/services">Commercial &amp; Industrial</a></li>
+        <li><a href="/services">Emergency Electrician</a></li>
+        <li><a href="/services">EV Charger Installation</a></li>
+        <li><a href="/services">All Services</a></li>
+      </ul>
+    </div>
+
+    <!-- Quick Links -->
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">About Us</a></li>
+        <li><a href="/gallery">Gallery</a></li>
+        <li><a href="/contact">Free Estimate</a></li>
+        <li><a href="/contact">Contact Us</a></li>
+      </ul>
+    </div>
+
+    <!-- Business Hours -->
+    <div class="footer-col">
+      <h4>Business Hours</h4>
+      <div class="footer-hours">
+        <div class="footer-hour-row"><span>Monday – Friday</span><span>8am – 8pm</span></div>
+        <div class="footer-hour-row"><span>Saturday</span><span>8am – 8pm</span></div>
+        <div class="footer-hour-row"><span>Sunday</span><span>Closed</span></div>
+      </div>
+      <div class="footer-emergency">24-Hour Emergency Service</div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <span>&copy; {new Date().getFullYear()} Eclipse Electrical Services Ltd. All rights reserved.</span>
+    <div class="footer-bottom-links">
+      <a href="/privacy">Privacy Policy</a>
+      <a href="/contact">Contact</a>
+    </div>
+  </div>
+</footer>
