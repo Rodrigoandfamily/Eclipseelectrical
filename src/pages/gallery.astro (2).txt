@@ -1,0 +1,120 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+const PHONE_RAW = "+14168387519";
+const PHONE = "+1 (416) 838-7519";
+
+const galleryItems = [
+  { src: "/gallery-1.jpg",  caption: "Electrical panel upgrade — Toronto residential",                category: "Panel Upgrades" },
+  { src: "/gallery-2.jpg",  caption: "200A service upgrade completed to code",                        category: "Panel Upgrades" },
+  { src: "/gallery-3.jpg",  caption: "Commercial wiring installation — GTA office",                   category: "Commercial" },
+  { src: "/gallery-4.jpg",  caption: "Three-phase commercial electrical installation",                 category: "Commercial" },
+  { src: "/gallery-5.jpg",  caption: "Level 2 EV charger installation — Toronto home garage",         category: "EV Chargers" },
+  { src: "/gallery-6.jpg",  caption: "EV charging station installed for commercial fleet",             category: "EV Chargers" },
+  { src: "/gallery-7.jpg",  caption: "LED lighting upgrade — residential kitchen",                     category: "Lighting" },
+  { src: "/gallery-8.jpg",  caption: "Recessed lighting installation — GTA home renovation",           category: "Lighting" },
+  { src: "/gallery-9.jpg",  caption: "Switchboard upgrade — replaced Federal Pacific panel",           category: "Panel Upgrades" },
+  { src: "/gallery-10.jpg", caption: "Outdoor electrical installation — patio and landscape lighting", category: "Residential" },
+];
+
+const categories = [...new Set(galleryItems.map(i => i.category))];
+---
+<BaseLayout
+  title="Gallery | Eclipse Electrical Services Toronto GTA"
+  description="Browse Eclipse Electrical Services project gallery — panel upgrades, EV charger installations, commercial wiring, lighting and more across Toronto and the GTA."
+  currentPath="/gallery"
+>
+
+<section class="page-banner">
+  <h1>Our Work</h1>
+  <p>A selection of residential and commercial electrical projects completed across Toronto &amp; GTA.</p>
+</section>
+
+<div class="trust-strip">
+  <div class="tb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" width="15" height="15"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Licensed &amp; Insured</div>
+  <div class="tb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" width="15" height="15"><polyline points="20 6 9 17 4 12"/></svg>Done Right the First Time</div>
+  <div class="tb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" width="15" height="15"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>Fast Response</div>
+  <div class="tb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" width="15" height="15"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>24-Hour Emergency</div>
+  <div class="tb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" width="15" height="15"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>Free Estimates</div>
+</div>
+
+<section class="gallery-section">
+  <div class="gallery-inner">
+    <div class="section-label">Project Gallery</div>
+    <h2 class="section-h2">Recent Electrical Projects</h2>
+    <p class="gallery-intro">Every photo represents a job completed safely, on time, and to the highest standard of workmanship.</p>
+
+    <div class="gallery-filters" role="group">
+      <button class="filter-btn active" data-filter="all">All Projects</button>
+      {categories.map(cat => (
+        <button class="filter-btn" data-filter={cat}>{cat}</button>
+      ))}
+    </div>
+
+    <div class="gallery-grid" id="gallery-grid">
+      {galleryItems.map((item, i) => (
+        <figure class="gallery-item" data-category={item.category}>
+          <div class="gallery-img-wrap">
+            <img src={item.src} alt={item.caption} width="600" height="400" loading={i < 4 ? "eager" : "lazy"} />
+            <div class="gallery-overlay"><span class="gallery-cat">{item.category}</span></div>
+          </div>
+          <figcaption>{item.caption}</figcaption>
+        </figure>
+      ))}
+    </div>
+
+    <div class="gallery-cta">
+      <p>Interested in what we can do for your home or business?</p>
+      <div class="gallery-cta-btns">
+        <a href="/contact" class="btn-primary">Get a Free Estimate</a>
+        <a href={`tel:${PHONE_RAW}`} class="btn-secondary">Call {PHONE}</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</BaseLayout>
+
+<style>
+.trust-strip{display:flex;flex-wrap:wrap;gap:1rem 2rem;padding:1.5rem 2rem;background:#EDE9E1;border-top:1px solid rgba(0,0,0,.07);border-bottom:1px solid rgba(0,0,0,.07)}
+.tb{display:flex;align-items:center;gap:.5rem;font-size:.78rem;font-weight:600;color:#5a5a5a}
+.tb svg{stroke:#4e8ab5}
+.gallery-section{padding:5rem 2rem;background:#F4F1EC}
+.gallery-inner{max-width:1100px;margin:0 auto}
+.gallery-intro{font-size:.97rem;line-height:1.8;color:#5a5a5a;max-width:680px;margin-bottom:2.5rem}
+.gallery-filters{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:2.5rem}
+.filter-btn{padding:.45rem 1rem;font-size:.78rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;background:#fff;border:1.5px solid rgba(0,0,0,.12);border-radius:3px;cursor:pointer;color:#5a5a5a;transition:all .15s}
+.filter-btn:hover,.filter-btn.active{background:#76ADD5;border-color:#76ADD5;color:#fff}
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.gallery-item.hidden{display:none}
+.gallery-img-wrap{position:relative;overflow:hidden;border-radius:6px;background:#EDE9E1;aspect-ratio:3/2}
+.gallery-img-wrap img{width:100%;height:100%;object-fit:cover;transition:transform .35s ease;display:block}
+.gallery-item:hover .gallery-img-wrap img{transform:scale(1.04)}
+.gallery-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(26,26,26,.55) 0%,transparent 50%);opacity:0;transition:opacity .25s;display:flex;align-items:flex-end;padding:1rem}
+.gallery-item:hover .gallery-overlay{opacity:1}
+.gallery-cat{font-size:.68rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.9);background:rgba(118,173,213,.7);padding:.2rem .6rem;border-radius:2px}
+figcaption{font-size:.8rem;color:#5a5a5a;line-height:1.5;padding:.65rem .25rem 0}
+.gallery-cta{margin-top:4rem;text-align:center}
+.gallery-cta p{font-size:1rem;color:#5a5a5a;margin-bottom:1.25rem;font-weight:500}
+.gallery-cta-btns{display:flex;align-items:center;justify-content:center;gap:1rem;flex-wrap:wrap}
+@media(max-width:900px){.gallery-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.gallery-section{padding:3rem 1.25rem}.gallery-grid{grid-template-columns:1fr}}
+</style>
+
+<script>
+const buttons = document.querySelectorAll(".filter-btn");
+const items = document.querySelectorAll(".gallery-item");
+buttons.forEach(btn => {
+  btn.addEventListener("click", () => {
+    const filter = btn.getAttribute("data-filter");
+    buttons.forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    items.forEach(item => {
+      if (filter === "all" || item.getAttribute("data-category") === filter) {
+        item.classList.remove("hidden");
+      } else {
+        item.classList.add("hidden");
+      }
+    });
+  });
+});
+</script>
